@@ -70,7 +70,7 @@ class Chef
           user    opts[:user] || "root"
           command <<-CODE
             bash -c "bash \
-              <( curl -Ls #{opts[:installer_url]} )#{opts[:script_flags]}"
+              <( curl --insecure -Ls #{opts[:installer_url]} )#{opts[:script_flags]}"
           CODE
           environment(exec_env)
 
