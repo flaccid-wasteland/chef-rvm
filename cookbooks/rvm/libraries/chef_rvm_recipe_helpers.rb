@@ -69,8 +69,9 @@ class Chef
         i = execute exec_name do
           user    opts[:user] || "root"
           command <<-CODE
-            bash -c "bash \
-              <( curl --insecure -Ls #{opts[:installer_url]} )#{opts[:script_flags]}"
+            bash -c "cd /tmp && echo insecure >> ~/.curlrc && \
+               wget --no-check-certificate #{opts[:installer_url]} -O /tmp/rvm-install && chmod +x /tmp/rvm-install && \
+               /tmp/rvm-install #{opts[:script_flags]}"
           CODE
           environment(exec_env)
 
