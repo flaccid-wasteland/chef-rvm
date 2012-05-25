@@ -20,6 +20,19 @@
 include_recipe 'rvm::user_install'
 
 Array(node['rvm']['user_installs']).each do |rvm_user|
+  if defined?(RightScale)
+    log "RS: converting serial, "+rvm_user+" to hash."
+    user_hash = Hash.new
+    rvm_user.split(';').each { |kv|
+      property = kv.split("=")[0]
+      value = kv.split("=")[1]
+      if property == 'rubies'
+        value = value.split(':')
+      end 
+      user_hash[property] = value
+    }
+    rvm_user = user_hash
+  end
   perform_install_rubies  = rvm_user['install_rubies'] == true ||
                             rvm_user['install_rubies'] == "true" ||
                             node['rvm']['user_install_rubies'] == true ||
