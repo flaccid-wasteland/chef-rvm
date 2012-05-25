@@ -66,7 +66,7 @@ attribute "rvm/global_gems",
   :type => "array",
   :default => [
     "name=bundler",
-    "name=rake,version=0.9.2"
+    "name=rake;version=0.9.2"
   ],
   :recipes => [ "rvm::system" ]
   

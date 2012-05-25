@@ -36,7 +36,7 @@ if install_rubies
     if defined?(RightScale)
       log "RS: converting serial, "+gem+" to hash."
       gem_hash = Hash.new
-      gem.split(',').each { |kv|
+      gem.split(';').each { |kv|
         gem_hash[kv.split("=")[0]] = kv.split("=")[1]	
       }
       gem = gem_hash
