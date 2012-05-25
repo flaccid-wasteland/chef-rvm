@@ -22,6 +22,19 @@ include_recipe 'rvm'
 install_pkg_prereqs
 
 Array(node['rvm']['user_installs']).each do |rvm_user|
+  if defined?(RightScale)
+    log "RS: converting serial, "+rvm_user+" to hash."
+    user_hash = Hash.new
+    rvm_user.split(';').each { |kv|
+      property = kv.split("=")[0]
+      value = kv.split("=")[1]
+      if property == 'rubies'
+        value = value.split(':')
+      end 
+      user_hash[property] = value
+    }
+    rvm_user = user_hash
+  end
   script_flags      = build_script_flags(rvm_user['version'], rvm_user['branch'])
   upgrade_strategy  = build_upgrade_strategy(rvm_user['upgrade'])
   installer_url     = rvm_user['installer_url'] || node['rvm']['installer_url']
