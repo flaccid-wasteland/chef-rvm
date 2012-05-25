@@ -147,7 +147,7 @@
         "rvm::user",
         "rvm::user_installs"
       ],
-      "display_name": "RVM System RubyGems",
+      "display_name": "RVM User Installs",
       "description": "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby sytem-wide."
     },
     "rvm/global_gems": {

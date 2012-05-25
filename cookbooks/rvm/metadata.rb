@@ -71,7 +71,7 @@ attribute "rvm/global_gems",
   :recipes => [ "rvm::system" ]
 
 attribute "rvm/user_installs",
-  :display_name => "RVM System RubyGems",
+  :display_name => "RVM User Installs",
   :description => "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby sytem-wide.",
   :required => "optional",
   :type => "array",
