@@ -69,7 +69,15 @@ attribute "rvm/global_gems",
     "name=rake;version=0.9.2"
   ],
   :recipes => [ "rvm::system" ]
-  
+
+attribute "rvm/user_installs",
+  :display_name => "RVM System RubyGems",
+  :description => "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby sytem-wide.",
+  :required => "optional",
+  :type => "array",
+  :default => [],
+  :recipes => [ "rvm::user", "rvm::user_installs" ]
+
 attribute "rvm/user_global_gems",
   :display_name => "RVM User Global RubyGems",
   :description => "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby for each user when not explicitly set.",

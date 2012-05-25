@@ -133,6 +133,23 @@
       "display_name": "RVM Install Location",
       "description": "The location to install RVM to."
     },
+    "rvm/user_installs": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": [
+
+      ],
+      "type": "array",
+      "recipes": [
+        "rvm::user",
+        "rvm::user_installs"
+      ],
+      "display_name": "RVM System RubyGems",
+      "description": "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby sytem-wide."
+    },
     "rvm/global_gems": {
       "required": "optional",
       "calculated": false,
