@@ -34,6 +34,7 @@ if install_rubies
   # install global gems
   node['rvm']['global_gems'].each do |gem|
     if defined?(RightScale)
+      gem_hash = Hash.new
       gem.split(',').each { |kv|
         gem_hash[kv.split("=")[0]] = kv.split("=")[1]	
       }
